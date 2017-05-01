@@ -1,0 +1,16 @@
+[
+{
+  "modid": "hodgepodge",
+  "name": "Hodge Podge",
+  "description": "Anything and everything cool!",
+  "version": "1.0",
+  "mcversion": "1.11.2",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Handirocker21"],
+  "credits": "Hella poppin hella hos",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

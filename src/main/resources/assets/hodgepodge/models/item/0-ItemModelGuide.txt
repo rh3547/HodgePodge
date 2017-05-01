@@ -1,0 +1,20 @@
+For item models:
+================================
+Name these files the same as it's corresponding UNLOCALIZED name.
+Ex: An item with an unlocalized name of "ruby" should have the file named "ruby.json".
+
+When specifiying a texture with the following:
+
+    "textures": {
+        "layer0": "hodgepodge:items/ruby"
+     }
+    
+The text "ruby" should be the name of the texture (png) file.
+
+For itemblock models:
+================================
+Name these files the same as the block's corresponding UNLOCALIZED name.
+Ex: A block with an unlocalized name of "rubyblock" should have the file named "rubyblock.json".
+
+Tell the item model to be the same as the block model by adding this to the model file:
+"parent": "hodgepodge:block/rubyblock"

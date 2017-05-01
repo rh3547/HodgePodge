@@ -1,0 +1,7 @@
+Name these files the same as it's corresponding REGISTRY name.
+
+Ex: An block with a registry name of "BlockRuby" should have the file named "blockruby.json".
+
+For each variant block state add a block model reference like so:
+    "normal": { "model": "hodgepodge:rubyblock" }
+Where "rubyblock" will be the name of the blick model json file.

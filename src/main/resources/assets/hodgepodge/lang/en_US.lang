@@ -1,0 +1,14 @@
+/*
+    Lang file
+*/
+
+// Items
+item.obsidianingot.name=Obsidian Ingot
+item.ruby.name=Ruby
+item.rubygummy.name=Delicious Ruby Gummy
+
+// Blocks
+tile.rubyblock.name=Ruby Block
+
+// Creative Tab
+itemGroup.tab_hodgepodge=Hodge Podge Mess
