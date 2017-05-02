@@ -6,12 +6,18 @@
 item.obsidianingot.name=Obsidian Ingot
 item.ruby.name=Ruby
 item.rubygummy.name=Delicious Ruby Gummy
+item.rubidian.name=Rubidian
 
 // Blocks
 tile.rubyblock.name=Ruby Block
 
 // Tools
-
+item.obsidianpickaxe.name=Obsidian Pickaxe
+item.obsidianaxe.name=Obsidian Axe
+item.obsidianhoe.name=Obsidian Hoe
+item.obsidianspade.name=Obsidian Shovel
+item.obsidiansword.name=Obsidian Sword
+item.rubidiansword.name=Night's Bane
 
 // Creative Tab
 itemGroup.tab_hodgepodge=Hodge Podge Mess

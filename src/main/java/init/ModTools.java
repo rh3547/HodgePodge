@@ -9,6 +9,7 @@ import items.ItemModHoe;
 import items.ItemModPickaxe;
 import items.ItemModSpade;
 import items.ItemModSword;
+import items.ItemRubidianSword;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
@@ -23,46 +24,52 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModTools {
 	
-	//public static final ToolMaterial obsidianMaterial = EnumHelper.addToolMaterial(
-			//Reference.MOD_ID + ":obsidian", 4, 800, 5.0F, 2.0F, 12);
+	public static final ToolMaterial obsidianMaterial = EnumHelper.addToolMaterial(
+			Reference.MOD_ID + ":obsidian", 4, 2000, 4.0F, 2.0F, 12); // Obsidian ingot material
+	public static final ToolMaterial rubidianMaterial = EnumHelper.addToolMaterial(
+			Reference.MOD_ID + ":rubidian", 4, 2000, 8.0F, 6.0F, 15); // Rubidian material
 	
-	//public static ItemPickaxe obsidianPickaxe;
-	//public static ItemModAxe obsidianAxe;
-	//public static ItemHoe obsidianHoe;
-	//public static ItemSpade obsidianSpade;
-	//public static ItemSword obsidianSword;
+	public static ItemPickaxe obsidianPickaxe;
+	public static ItemModAxe obsidianAxe;
+	public static ItemHoe obsidianHoe;
+	public static ItemSpade obsidianSpade;
+	public static ItemSword obsidianSword;
+	public static ItemSword rubidianSword;
 	
 	/**
 	 * Initialize tools.
 	 */
 	public static void init() {
-		//obsidianPickaxe = new ItemModPickaxe(obsidianMaterial, Reference.HodgePodgeTools.OBSIDIAN_PICKAXE.getUnlocalizedName(), Reference.HodgePodgeTools.OBSIDIAN_PICKAXE.getRegistryName());
-		//obsidianAxe = new ItemModAxe(obsidianMaterial, Reference.HodgePodgeTools.OBSIDIAN_AXE.getUnlocalizedName(), Reference.HodgePodgeTools.OBSIDIAN_AXE.getRegistryName());
-		//obsidianHoe = new ItemModHoe(obsidianMaterial, Reference.HodgePodgeTools.OBSIDIAN_HOE.getUnlocalizedName(), Reference.HodgePodgeTools.OBSIDIAN_HOE.getRegistryName());
-		//obsidianSpade = new ItemModSpade(obsidianMaterial, Reference.HodgePodgeTools.OBSIDIAN_SPADE.getUnlocalizedName(), Reference.HodgePodgeTools.OBSIDIAN_SPADE.getRegistryName());
-		//obsidianSword = new ItemModSword(obsidianMaterial, Reference.HodgePodgeTools.OBSIDIAN_SWORD.getUnlocalizedName(), Reference.HodgePodgeTools.OBSIDIAN_SWORD.getRegistryName());
+		obsidianPickaxe = new ItemModPickaxe(obsidianMaterial, Reference.HodgePodgeTools.OBSIDIAN_PICKAXE.getUnlocalizedName(), Reference.HodgePodgeTools.OBSIDIAN_PICKAXE.getRegistryName());
+		obsidianAxe = new ItemModAxe(obsidianMaterial, Reference.HodgePodgeTools.OBSIDIAN_AXE.getUnlocalizedName(), Reference.HodgePodgeTools.OBSIDIAN_AXE.getRegistryName());
+		obsidianHoe = new ItemModHoe(obsidianMaterial, Reference.HodgePodgeTools.OBSIDIAN_HOE.getUnlocalizedName(), Reference.HodgePodgeTools.OBSIDIAN_HOE.getRegistryName());
+		obsidianSpade = new ItemModSpade(obsidianMaterial, Reference.HodgePodgeTools.OBSIDIAN_SPADE.getUnlocalizedName(), Reference.HodgePodgeTools.OBSIDIAN_SPADE.getRegistryName());
+		obsidianSword = new ItemModSword(obsidianMaterial, Reference.HodgePodgeTools.OBSIDIAN_SWORD.getUnlocalizedName(), Reference.HodgePodgeTools.OBSIDIAN_SWORD.getRegistryName());
+		rubidianSword = new ItemRubidianSword(rubidianMaterial, Reference.HodgePodgeTools.RUBIDIAN_SWORD.getUnlocalizedName(), Reference.HodgePodgeTools.RUBIDIAN_SWORD.getRegistryName());
 	}
 	
 	/**
 	 * Register all tools.
 	 */
 	public static void register() {
-		//registerItem(obsidianPickaxe);
-		//registerItem(obsidianAxe);
-		//registerItem(obsidianHoe);
-		//registerItem(obsidianSpade);
-		//registerItem(obsidianSword);
+		registerItem(obsidianPickaxe);
+		registerItem(obsidianAxe);
+		registerItem(obsidianHoe);
+		registerItem(obsidianSpade);
+		registerItem(obsidianSword);
+		registerItem(rubidianSword);
 	}
 	
 	/**
 	 * Register all tool renders.
 	 */
 	public static void registerRenders() {
-		//registerRender(obsidianPickaxe);
-		//registerRender(obsidianAxe);
-		//registerRender(obsidianHoe);
-		//registerRender(obsidianSpade);
-		//registerRender(obsidianSword);
+		registerRender(obsidianPickaxe);
+		registerRender(obsidianAxe);
+		registerRender(obsidianHoe);
+		registerRender(obsidianSpade);
+		registerRender(obsidianSword);
+		registerRender(rubidianSword);
 	}
 	
 	/**

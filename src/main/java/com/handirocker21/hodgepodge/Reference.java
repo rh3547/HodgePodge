@@ -23,7 +23,8 @@ public class Reference {
 	public static enum HodgePodgeItems {
 		OBSIDIAN_INGOT("obsidianingot", "ItemObsidianIngot"),
 		RUBY("ruby", "ItemRuby"),
-		RUBY_GUMMY("rubygummy", "ItemRubyGummy");
+		RUBY_GUMMY("rubygummy", "ItemRubyGummy"),
+		RUBIDIAN("rubidian", "ItemRubidian");
 		
 		private String unlocalizedName;
 		private String registryName;
@@ -74,7 +75,8 @@ public class Reference {
 		OBSIDIAN_AXE("obsidianaxe", "obsidianaxe"),
 		OBSIDIAN_HOE("obsidianhoe", "obsidianhoe"),
 		OBSIDIAN_SPADE("obsidianspade", "obsidianspade"),
-		OBSIDIAN_SWORD("obsidiansword", "obsidiansword");
+		OBSIDIAN_SWORD("obsidiansword", "obsidiansword"),
+		RUBIDIAN_SWORD("rubidiansword", "rubidiansword");
 		
 		private String unlocalizedName;
 		private String registryName;

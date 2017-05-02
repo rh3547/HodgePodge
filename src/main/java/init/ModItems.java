@@ -5,6 +5,7 @@ import com.handirocker21.hodgepodge.Reference;
 import com.handirocker21.hodgepodge.utils.Utils;
 
 import items.ItemObsidianIngot;
+import items.ItemRubidian;
 import items.ItemRuby;
 import items.ItemRubyGummy;
 import net.minecraft.client.Minecraft;
@@ -22,6 +23,7 @@ public class ModItems {
 	public static Item obsidianIngot;
 	public static Item ruby;
 	public static Item rubyGummy;
+	public static Item rubidian;
 	
 	/**
 	 * Initialize items.
@@ -30,6 +32,7 @@ public class ModItems {
 		obsidianIngot = new ItemObsidianIngot();
 		ruby = new ItemRuby();
 		rubyGummy = new ItemRubyGummy();
+		rubidian = new ItemRubidian();
 	}
 	
 	/**
@@ -39,6 +42,7 @@ public class ModItems {
 		registerItem(obsidianIngot);
 		registerItem(ruby);
 		registerItem(rubyGummy);
+		registerItem(rubidian);
 	}
 	
 	/**
@@ -48,6 +52,7 @@ public class ModItems {
 		registerRender(obsidianIngot);
 		registerRender(ruby);
 		registerRender(rubyGummy);
+		registerRender(rubidian);
 	}
 	
 	/**
