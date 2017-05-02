@@ -67,6 +67,33 @@ public class Reference {
 	}
 	
 	/*
+	 * Tool Names
+	 */
+	public static enum HodgePodgeTools {
+		OBSIDIAN_PICKAXE("obsidianpickaxe", "obsidianpickaxe"),
+		OBSIDIAN_AXE("obsidianaxe", "obsidianaxe"),
+		OBSIDIAN_HOE("obsidianhoe", "obsidianhoe"),
+		OBSIDIAN_SPADE("obsidianspade", "obsidianspade"),
+		OBSIDIAN_SWORD("obsidiansword", "obsidiansword");
+		
+		private String unlocalizedName;
+		private String registryName;
+		
+		HodgePodgeTools(String unlocalizedName, String registryName) {
+			this.unlocalizedName = unlocalizedName;
+			this.registryName = registryName;
+		}
+		
+		public String getUnlocalizedName() {
+			return this.unlocalizedName;
+		}
+		
+		public String getRegistryName() {
+			return this.registryName;
+		}
+	}
+	
+	/*
 	 * Chip types for different block/item "levels"
 	 */
 	public static enum ChipTypes implements IStringSerializable {

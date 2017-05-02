@@ -42,6 +42,15 @@ public class ModItems {
 	}
 	
 	/**
+	 * Register all item renders.
+	 */
+	public static void registerRenders() {
+		registerRender(obsidianIngot);
+		registerRender(ruby);
+		registerRender(rubyGummy);
+	}
+	
+	/**
 	 * Register the given item.
 	 * @param item
 	 */
@@ -49,15 +58,6 @@ public class ModItems {
 		GameRegistry.register(item);
 		item.setCreativeTab(HodgePodge.tabHodgePodge);
 		Utils.getLogger().info("Registered item " + item.getUnlocalizedName().substring(5));
-	}
-	
-	/**
-	 * Register all item renders.
-	 */
-	public static void registerRenders() {
-		registerRender(obsidianIngot);
-		registerRender(ruby);
-		registerRender(rubyGummy);
 	}
 	
 	/**

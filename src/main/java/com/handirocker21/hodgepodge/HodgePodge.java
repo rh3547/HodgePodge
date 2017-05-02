@@ -6,6 +6,7 @@ import com.handirocker21.hodgepodge.utils.Utils;
 import init.ModBlocks;
 import init.ModCrafting;
 import init.ModItems;
+import init.ModTools;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
@@ -32,10 +33,12 @@ public class HodgePodge {
 		// Initialize items and blocks
 		ModItems.init();
 		ModBlocks.init();
+		ModTools.init();
 		
 		// Register items and blocks
 		ModItems.register();
 		ModBlocks.register();	
+		ModTools.register();
 		
 		// Initialize proxys (register renders)
 		proxy.init();

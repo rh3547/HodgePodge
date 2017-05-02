@@ -36,6 +36,13 @@ public class ModBlocks {
 	}
 	
 	/**
+	 * Register all block renders.
+	 */
+	public static void registerRenders() {
+		registerRender(rubyBlock);
+	}
+	
+	/**
 	 * Register the given block.
 	 * @param block
 	 */
@@ -45,13 +52,6 @@ public class ModBlocks {
 		Utils.getLogger().info("Registered block " + block.getUnlocalizedName().substring(5));
 
 		block.setCreativeTab(HodgePodge.tabHodgePodge);
-	}
-	
-	/**
-	 * Register all block renders.
-	 */
-	public static void registerRenders() {
-		registerRender(rubyBlock);
 	}
 	
 	/**
