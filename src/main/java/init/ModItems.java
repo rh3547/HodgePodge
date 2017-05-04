@@ -8,6 +8,8 @@ import items.ItemObsidianIngot;
 import items.ItemRubidian;
 import items.ItemRuby;
 import items.ItemRubyGummy;
+import items.ItemSoul;
+import items.ItemSoulCistern;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -24,6 +26,8 @@ public class ModItems {
 	public static Item ruby;
 	public static Item rubyGummy;
 	public static Item rubidian;
+	public static Item soul;
+	public static Item soulCistern;
 	
 	/**
 	 * Initialize items.
@@ -33,6 +37,8 @@ public class ModItems {
 		ruby = new ItemRuby();
 		rubyGummy = new ItemRubyGummy();
 		rubidian = new ItemRubidian();
+		soul = new ItemSoul();
+		soulCistern = new ItemSoulCistern();
 	}
 	
 	/**
@@ -43,6 +49,8 @@ public class ModItems {
 		registerItem(ruby);
 		registerItem(rubyGummy);
 		registerItem(rubidian);
+		registerItem(soul);
+		registerItem(soulCistern);
 	}
 	
 	/**
@@ -53,6 +61,8 @@ public class ModItems {
 		registerRender(ruby);
 		registerRender(rubyGummy);
 		registerRender(rubidian);
+		registerRender(soul);
+		registerRender(soulCistern);
 	}
 	
 	/**

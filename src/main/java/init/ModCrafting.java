@@ -59,17 +59,31 @@ public class ModCrafting {
 				'O', ModItems.obsidianIngot,
 				'S', Items.STICK); // Obsidian sword
 		GameRegistry.addShapedRecipe(new ItemStack(ModItems.rubidian), 
-				"ORO", 
 				"ROR", 
-				"ORO", 
+				"OSO", 
+				"ROR", 
 				'O', ModItems.obsidianIngot,
-				'R', ModBlocks.rubyBlock); // Rubidian
+				'R', ModBlocks.rubyBlock,
+				'S', ModItems.soulCistern); // Rubidian
 		GameRegistry.addShapedRecipe(new ItemStack(ModTools.rubidianSword), 
 				" R ", 
 				"IRI", 
 				" I ", 
 				'I', Blocks.IRON_BARS,
 				'R', ModItems.rubidian); // Rubidian sword
+		GameRegistry.addShapedRecipe(new ItemStack(ModTools.soulStealer), 
+				" O ", 
+				" R ", 
+				" S ", 
+				'S', Items.STICK,
+				'R', Blocks.STONE,
+				'O', ModItems.obsidianIngot); // Soul Stealer
+		GameRegistry.addShapedRecipe(new ItemStack(ModItems.soulCistern), 
+				"SSS",
+				"SOS",
+				"SSS",
+				'S', ModItems.soul,
+				'O', ModItems.obsidianIngot); // Soul Cistern
 		
 		/*
 		 * Shapeless recipes.

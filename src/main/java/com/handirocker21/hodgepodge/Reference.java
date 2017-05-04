@@ -24,7 +24,10 @@ public class Reference {
 		OBSIDIAN_INGOT("obsidianingot", "ItemObsidianIngot"),
 		RUBY("ruby", "ItemRuby"),
 		RUBY_GUMMY("rubygummy", "ItemRubyGummy"),
-		RUBIDIAN("rubidian", "ItemRubidian");
+		RUBIDIAN("rubidian", "ItemRubidian"),
+		SOUL("soul", "ItemSoul"),
+		SOUL_STEALER("soulstealer", "ItemSoulStealer"),
+		SOUL_CISTERN("soulcistern", "ItemSoulCistern");
 		
 		private String unlocalizedName;
 		private String registryName;

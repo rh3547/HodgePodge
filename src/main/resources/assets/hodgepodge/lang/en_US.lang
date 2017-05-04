@@ -7,6 +7,15 @@ item.obsidianingot.name=Obsidian Ingot
 item.ruby.name=Ruby
 item.rubygummy.name=Delicious Ruby Gummy
 item.rubidian.name=Rubidian
+item.soul.name=Soul
+item.soulstealer.name=Soul Stealer
+item.soulcistern.name=Cistern of Souls
+
+// Item Tooltips
+hodgepodge.rubidiansword.tooltip=Prevail in darkness
+hodgepodge.soul.tooltip=Replenish your soul
+hodgepodge.soulstealer.tooltip=Relieve the soul of another
+hodgepodge.soulcistern.tooltip=Listen close, and hear them whisper
 
 // Blocks
 tile.rubyblock.name=Ruby Block

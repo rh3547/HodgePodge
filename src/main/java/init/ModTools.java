@@ -10,6 +10,7 @@ import items.ItemModPickaxe;
 import items.ItemModSpade;
 import items.ItemModSword;
 import items.ItemRubidianSword;
+import items.ItemSoulStealer;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
@@ -25,9 +26,9 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class ModTools {
 	
 	public static final ToolMaterial obsidianMaterial = EnumHelper.addToolMaterial(
-			Reference.MOD_ID + ":obsidian", 4, 2000, 4.0F, 2.0F, 12); // Obsidian ingot material
+			Reference.MOD_ID + ":obsidian", 4, 1500, 3.0F, 2.0F, 12); // Obsidian ingot material
 	public static final ToolMaterial rubidianMaterial = EnumHelper.addToolMaterial(
-			Reference.MOD_ID + ":rubidian", 4, 2000, 8.0F, 6.0F, 15); // Rubidian material
+			Reference.MOD_ID + ":rubidian", 4, 2000, 6.0F, 3.0F, 15); // Rubidian material
 	
 	public static ItemPickaxe obsidianPickaxe;
 	public static ItemModAxe obsidianAxe;
@@ -35,6 +36,7 @@ public class ModTools {
 	public static ItemSpade obsidianSpade;
 	public static ItemSword obsidianSword;
 	public static ItemSword rubidianSword;
+	public static ItemSoulStealer soulStealer;
 	
 	/**
 	 * Initialize tools.
@@ -46,6 +48,7 @@ public class ModTools {
 		obsidianSpade = new ItemModSpade(obsidianMaterial, Reference.HodgePodgeTools.OBSIDIAN_SPADE.getUnlocalizedName(), Reference.HodgePodgeTools.OBSIDIAN_SPADE.getRegistryName());
 		obsidianSword = new ItemModSword(obsidianMaterial, Reference.HodgePodgeTools.OBSIDIAN_SWORD.getUnlocalizedName(), Reference.HodgePodgeTools.OBSIDIAN_SWORD.getRegistryName());
 		rubidianSword = new ItemRubidianSword(rubidianMaterial, Reference.HodgePodgeTools.RUBIDIAN_SWORD.getUnlocalizedName(), Reference.HodgePodgeTools.RUBIDIAN_SWORD.getRegistryName());
+		soulStealer = new ItemSoulStealer();
 	}
 	
 	/**
@@ -58,6 +61,7 @@ public class ModTools {
 		registerItem(obsidianSpade);
 		registerItem(obsidianSword);
 		registerItem(rubidianSword);
+		registerItem(soulStealer);
 	}
 	
 	/**
@@ -70,6 +74,7 @@ public class ModTools {
 		registerRender(obsidianSpade);
 		registerRender(obsidianSword);
 		registerRender(rubidianSword);
+		registerRender(soulStealer);
 	}
 	
 	/**

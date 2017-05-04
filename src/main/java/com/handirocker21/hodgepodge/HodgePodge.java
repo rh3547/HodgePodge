@@ -20,6 +20,9 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 @Mod(modid = Reference.MOD_ID, name = Reference.NAME, version = Reference.VERSION, acceptedMinecraftVersions = Reference.ACCEPTED_VERSIONS)
 public class HodgePodge {
 	
+	// The custom event handler
+	com.handirocker21.hodgepodge.handlers.EventHandler eventHandler = new com.handirocker21.hodgepodge.handlers.EventHandler();
+	
 	@Instance
 	public static HodgePodge instance;
 	
@@ -49,6 +52,7 @@ public class HodgePodge {
 		Utils.getLogger().info("Initialization");
 		
 		// Register crafting recipes
+		eventHandler.registerEvents();
 		ModCrafting.register();
 	}
 	
