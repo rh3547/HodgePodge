@@ -21,13 +21,14 @@ public class Reference {
 	 * Item Names
 	 */
 	public static enum HodgePodgeItems {
-		OBSIDIAN_INGOT("obsidianingot", "ItemObsidianIngot"),
-		RUBY("ruby", "ItemRuby"),
-		RUBY_GUMMY("rubygummy", "ItemRubyGummy"),
-		RUBIDIAN("rubidian", "ItemRubidian"),
-		SOUL("soul", "ItemSoul"),
-		SOUL_STEALER("soulstealer", "ItemSoulStealer"),
-		SOUL_CISTERN("soulcistern", "ItemSoulCistern");
+		OBSIDIAN_INGOT("obsidianingot", "obsidianingot"),
+		POWERED_GEM("poweredgem", "poweredgem"),
+		GEMMY("gemmy", "gemmy"),
+		SOUL_CORE("soulcore", "soulcore"),
+		SOUL("soul", "soul"),
+		SOUL_STEALER("soulstealer", "soulstealer"),
+		SOUL_CISTERN("soulcistern", "soulcistern"),
+		MOB_MATTER("mobmatter", "mobmatter");
 		
 		private String unlocalizedName;
 		private String registryName;
@@ -51,7 +52,7 @@ public class Reference {
 	 * Block Names
 	 */
 	public static enum HodgePodgeBlocks {
-		RUBY_BLOCK("rubyblock", "BlockRuby");
+		POWERED_GEM_BLOCK("poweredgemblock", "poweredgemblock");
 		
 		private String unlocalizedName;
 		private String registryName;
@@ -79,7 +80,7 @@ public class Reference {
 		OBSIDIAN_HOE("obsidianhoe", "obsidianhoe"),
 		OBSIDIAN_SPADE("obsidianspade", "obsidianspade"),
 		OBSIDIAN_SWORD("obsidiansword", "obsidiansword"),
-		RUBIDIAN_SWORD("rubidiansword", "rubidiansword");
+		NIGHTS_BANE("nightsbane", "nightsbane");
 		
 		private String unlocalizedName;
 		private String registryName;

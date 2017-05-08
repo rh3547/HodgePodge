@@ -4,21 +4,13 @@
 
 // Items
 item.obsidianingot.name=Obsidian Ingot
-item.ruby.name=Ruby
-item.rubygummy.name=Delicious Ruby Gummy
-item.rubidian.name=Rubidian
+item.poweredgem.name=Powered Gem
+item.gemmy.name=Delicious Gemmy
+item.soulcore.name=Soul Core
 item.soul.name=Soul
 item.soulstealer.name=Soul Stealer
 item.soulcistern.name=Cistern of Souls
-
-// Item Tooltips
-hodgepodge.rubidiansword.tooltip=Prevail in darkness
-hodgepodge.soul.tooltip=Replenish your soul
-hodgepodge.soulstealer.tooltip=Relieve the soul of another
-hodgepodge.soulcistern.tooltip=Listen close, and hear them whisper
-
-// Blocks
-tile.rubyblock.name=Ruby Block
+item.mobmatter.name=Mob Matter
 
 // Tools
 item.obsidianpickaxe.name=Obsidian Pickaxe
@@ -26,7 +18,17 @@ item.obsidianaxe.name=Obsidian Axe
 item.obsidianhoe.name=Obsidian Hoe
 item.obsidianspade.name=Obsidian Shovel
 item.obsidiansword.name=Obsidian Sword
-item.rubidiansword.name=Night's Bane
+item.nightsbane.name=Night's Bane
+
+// Item Tooltips
+hodgepodge.nightsbane.tooltip=Prevail in darkness
+hodgepodge.soul.tooltip=Replenish your soul
+hodgepodge.soulstealer.tooltip=Relieve the soul of another
+hodgepodge.soulcistern.tooltip=Listen close, and hear them whisper
+hodgepodge.mobmatter.tooltip=It's pretty disgusting...
+
+// Blocks
+tile.poweredgemblock.name=Powered Gem Block
 
 // Creative Tab
 itemGroup.tab_hodgepodge=Hodge Podge Mess

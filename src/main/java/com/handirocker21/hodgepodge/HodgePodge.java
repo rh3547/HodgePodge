@@ -1,12 +1,12 @@
 package com.handirocker21.hodgepodge;
 
+import com.handirocker21.hodgepodge.init.ModBlocks;
+import com.handirocker21.hodgepodge.init.ModCrafting;
+import com.handirocker21.hodgepodge.init.ModItems;
+import com.handirocker21.hodgepodge.init.ModTools;
 import com.handirocker21.hodgepodge.proxy.CommonProxy;
 import com.handirocker21.hodgepodge.utils.Utils;
 
-import init.ModBlocks;
-import init.ModCrafting;
-import init.ModItems;
-import init.ModTools;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
@@ -51,9 +51,13 @@ public class HodgePodge {
 	public void init(FMLInitializationEvent event) {
 		Utils.getLogger().info("Initialization");
 		
-		// Register crafting recipes
+		// Register events
 		eventHandler.registerEvents();
-		ModCrafting.register();
+		
+		// Register crafting recipes
+		ModCrafting.registerCraftingRecipes();
+		ModCrafting.registerFurnaceRecipes();
+		ModCrafting.registerToolRecipes();
 	}
 	
 	@EventHandler
@@ -67,7 +71,7 @@ public class HodgePodge {
 	public static CreativeTabs tabHodgePodge = new CreativeTabs("tab_hodgepodge") {
 		@Override
 		public ItemStack getTabIconItem() {
-			return new ItemStack(ModItems.ruby);
+			return new ItemStack(ModItems.mobMatter);
 		}
 	};
 }

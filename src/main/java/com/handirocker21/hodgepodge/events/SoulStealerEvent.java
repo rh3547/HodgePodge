@@ -2,10 +2,10 @@ package com.handirocker21.hodgepodge.events;
 
 import java.util.Random;
 
+import com.handirocker21.hodgepodge.init.ModItems;
+import com.handirocker21.hodgepodge.init.ModTools;
 import com.handirocker21.hodgepodge.utils.Utils;
 
-import init.ModItems;
-import init.ModTools;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;

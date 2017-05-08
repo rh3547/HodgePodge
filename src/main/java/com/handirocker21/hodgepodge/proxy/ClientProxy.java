@@ -1,10 +1,10 @@
 package com.handirocker21.hodgepodge.proxy;
 
 import com.handirocker21.hodgepodge.Reference;
+import com.handirocker21.hodgepodge.init.ModBlocks;
+import com.handirocker21.hodgepodge.init.ModItems;
+import com.handirocker21.hodgepodge.init.ModTools;
 
-import init.ModBlocks;
-import init.ModItems;
-import init.ModTools;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
