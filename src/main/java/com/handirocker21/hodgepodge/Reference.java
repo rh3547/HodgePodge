@@ -52,7 +52,8 @@ public class Reference {
 	 * Block Names
 	 */
 	public static enum HodgePodgeBlocks {
-		POWERED_GEM_BLOCK("poweredgemblock", "poweredgemblock");
+		POWERED_GEM_BLOCK("poweredgemblock", "poweredgemblock"),
+		PEDESTAL_BLOCK("pedestal", "pedestal");
 		
 		private String unlocalizedName;
 		private String registryName;

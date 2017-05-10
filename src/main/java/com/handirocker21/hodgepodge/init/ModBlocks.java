@@ -3,10 +3,10 @@ package com.handirocker21.hodgepodge.init;
 import com.handirocker21.hodgepodge.HodgePodge;
 import com.handirocker21.hodgepodge.Reference;
 import com.handirocker21.hodgepodge.blocks.BlockPoweredGem;
+import com.handirocker21.hodgepodge.blocks.pedestal.BlockPedestal;
 import com.handirocker21.hodgepodge.utils.Utils;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -20,12 +20,14 @@ public class ModBlocks {
 	 * Blocks
 	 */
 	public static Block poweredGemBlock;
+	public static BlockPedestal pedestal;
 
 	/**
 	 * Initialize Blocks.
 	 */
 	public static void init() {
 		poweredGemBlock = new BlockPoweredGem(); 
+		pedestal = new BlockPedestal();
 	}
 	
 	/**
@@ -33,6 +35,7 @@ public class ModBlocks {
 	 */
 	public static void register() {
 		registerBlock(poweredGemBlock);
+		registerBlock(pedestal);
 	}
 	
 	/**
@@ -40,6 +43,7 @@ public class ModBlocks {
 	 */
 	public static void registerRenders() {
 		registerRender(poweredGemBlock);
+		registerRender(pedestal);
 	}
 	
 	/**
@@ -64,4 +68,6 @@ public class ModBlocks {
 		
 		Utils.getLogger().info("Register render for " + block.getUnlocalizedName().substring(5));
 	}
+
 }
+

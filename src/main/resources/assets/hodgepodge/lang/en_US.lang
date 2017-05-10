@@ -12,6 +12,16 @@ item.soulstealer.name=Soul Stealer
 item.soulcistern.name=Cistern of Souls
 item.mobmatter.name=Mob Matter
 
+// Item Tooltips
+hodgepodge.rubidiansword.tooltip=Prevail in darkness
+hodgepodge.soul.tooltip=Replenish your soul
+hodgepodge.soulstealer.tooltip=Relieve the soul of another
+hodgepodge.soulcistern.tooltip=Listen close, and hear them whisper
+
+// Blocks
+tile.poweredgemblock.name=Powered Gem Block
+tile.pedestal.name=Pedestal
+
 // Tools
 item.obsidianpickaxe.name=Obsidian Pickaxe
 item.obsidianaxe.name=Obsidian Axe
@@ -27,8 +37,8 @@ hodgepodge.soulstealer.tooltip=Relieve the soul of another
 hodgepodge.soulcistern.tooltip=Listen close, and hear them whisper
 hodgepodge.mobmatter.tooltip=It's pretty disgusting...
 
-// Blocks
-tile.poweredgemblock.name=Powered Gem Block
-
 // Creative Tab
 itemGroup.tab_hodgepodge=Hodge Podge Mess
+
+//Entities 
+entity.hodgepodge.name=Hodge Podge
