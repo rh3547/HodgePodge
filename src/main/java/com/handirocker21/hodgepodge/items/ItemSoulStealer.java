@@ -1,4 +1,4 @@
-package items;
+package com.handirocker21.hodgepodge.items;
 
 import java.util.List;
 import java.util.Set;

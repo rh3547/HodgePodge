@@ -19,6 +19,7 @@ hodgepodge.soulcistern.tooltip=Listen close, and hear them whisper
 
 // Blocks
 tile.rubyblock.name=Ruby Block
+tile.pedestal.name=Pedestal
 
 // Tools
 item.obsidianpickaxe.name=Obsidian Pickaxe
@@ -30,3 +31,6 @@ item.rubidiansword.name=Night's Bane
 
 // Creative Tab
 itemGroup.tab_hodgepodge=Hodge Podge Mess
+
+//Entities 
+entity.hodgepodge.name=Hodge Podge

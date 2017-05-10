@@ -1,8 +1,10 @@
-package init;
+package com.handirocker21.hodgepodge.init;
 
 import com.handirocker21.hodgepodge.HodgePodge;
 import com.handirocker21.hodgepodge.Reference;
 import com.handirocker21.hodgepodge.blocks.BlockRuby;
+import com.handirocker21.hodgepodge.blocks.BlockTileEntity;
+import com.handirocker21.hodgepodge.blocks.pedestal.BlockPedestal;
 import com.handirocker21.hodgepodge.utils.Utils;
 
 import net.minecraft.block.Block;
@@ -20,12 +22,15 @@ public class ModBlocks {
 	 * Blocks
 	 */
 	public static Block rubyBlock;
+	public static BlockPedestal pedestal;
 
 	/**
 	 * Initialize Blocks.
 	 */
 	public static void init() {
 		rubyBlock = new BlockRuby(); 
+		pedestal = new BlockPedestal();
+
 	}
 	
 	/**
@@ -33,6 +38,7 @@ public class ModBlocks {
 	 */
 	public static void register() {
 		registerBlock(rubyBlock);
+		registerBlock(pedestal);
 	}
 	
 	/**
@@ -40,6 +46,7 @@ public class ModBlocks {
 	 */
 	public static void registerRenders() {
 		registerRender(rubyBlock);
+		registerRender(pedestal);
 	}
 	
 	/**
@@ -64,4 +71,6 @@ public class ModBlocks {
 		
 		Utils.getLogger().info("Register render for " + block.getUnlocalizedName().substring(5));
 	}
+
 }
+

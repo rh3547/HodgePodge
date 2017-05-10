@@ -1,16 +1,16 @@
-package init;
+package com.handirocker21.hodgepodge.init;
 
 import com.handirocker21.hodgepodge.HodgePodge;
 import com.handirocker21.hodgepodge.Reference;
+import com.handirocker21.hodgepodge.items.ItemModAxe;
+import com.handirocker21.hodgepodge.items.ItemModHoe;
+import com.handirocker21.hodgepodge.items.ItemModPickaxe;
+import com.handirocker21.hodgepodge.items.ItemModSpade;
+import com.handirocker21.hodgepodge.items.ItemModSword;
+import com.handirocker21.hodgepodge.items.ItemRubidianSword;
+import com.handirocker21.hodgepodge.items.ItemSoulStealer;
 import com.handirocker21.hodgepodge.utils.Utils;
 
-import items.ItemModAxe;
-import items.ItemModHoe;
-import items.ItemModPickaxe;
-import items.ItemModSpade;
-import items.ItemModSword;
-import items.ItemRubidianSword;
-import items.ItemSoulStealer;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;

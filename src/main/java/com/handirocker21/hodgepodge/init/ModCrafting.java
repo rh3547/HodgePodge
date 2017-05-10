@@ -1,4 +1,4 @@
-package init;
+package com.handirocker21.hodgepodge.init;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;

@@ -1,12 +1,16 @@
 package com.handirocker21.hodgepodge;
 
+import com.handirocker21.hodgepodge.handlers.GuiHandler;
+import com.handirocker21.hodgepodge.init.ModBlocks;
+import com.handirocker21.hodgepodge.init.ModCrafting;
+import com.handirocker21.hodgepodge.init.ModEntities;
+import com.handirocker21.hodgepodge.init.ModItems;
+import com.handirocker21.hodgepodge.init.ModTools;
+import com.handirocker21.hodgepodge.network.PacketRequestUpdatePedestal;
+import com.handirocker21.hodgepodge.network.PacketUpdatePedestal;
 import com.handirocker21.hodgepodge.proxy.CommonProxy;
 import com.handirocker21.hodgepodge.utils.Utils;
 
-import init.ModBlocks;
-import init.ModCrafting;
-import init.ModItems;
-import init.ModTools;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
@@ -16,13 +20,19 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import net.minecraftforge.fml.relauncher.Side;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.NAME, version = Reference.VERSION, acceptedMinecraftVersions = Reference.ACCEPTED_VERSIONS)
 public class HodgePodge {
 	
 	// The custom event handler
 	com.handirocker21.hodgepodge.handlers.EventHandler eventHandler = new com.handirocker21.hodgepodge.handlers.EventHandler();
+
 	
+	public static SimpleNetworkWrapper wrapper;
+
 	@Instance
 	public static HodgePodge instance;
 	
@@ -42,9 +52,17 @@ public class HodgePodge {
 		ModItems.register();
 		ModBlocks.register();	
 		ModTools.register();
+
 		
 		// Initialize proxys (register renders)
 		proxy.init();
+		
+		// Register GUI handler
+		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
+			
+		wrapper = NetworkRegistry.INSTANCE.newSimpleChannel(Reference.MOD_ID);
+		wrapper.registerMessage(new PacketUpdatePedestal.Handler(), PacketUpdatePedestal.class, 0, Side.CLIENT);
+		wrapper.registerMessage(new PacketRequestUpdatePedestal.Handler(), PacketRequestUpdatePedestal.class, 1, Side.SERVER);
 	}
 	
 	@EventHandler
@@ -54,6 +72,9 @@ public class HodgePodge {
 		// Register crafting recipes
 		eventHandler.registerEvents();
 		ModCrafting.register();
+		
+		// Register mobs
+		ModEntities.register();
 	}
 	
 	@EventHandler

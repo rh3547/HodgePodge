@@ -1,15 +1,15 @@
-package init;
+package com.handirocker21.hodgepodge.init;
 
 import com.handirocker21.hodgepodge.HodgePodge;
 import com.handirocker21.hodgepodge.Reference;
+import com.handirocker21.hodgepodge.items.ItemObsidianIngot;
+import com.handirocker21.hodgepodge.items.ItemRubidian;
+import com.handirocker21.hodgepodge.items.ItemRuby;
+import com.handirocker21.hodgepodge.items.ItemRubyGummy;
+import com.handirocker21.hodgepodge.items.ItemSoul;
+import com.handirocker21.hodgepodge.items.ItemSoulCistern;
 import com.handirocker21.hodgepodge.utils.Utils;
 
-import items.ItemObsidianIngot;
-import items.ItemRubidian;
-import items.ItemRuby;
-import items.ItemRubyGummy;
-import items.ItemSoul;
-import items.ItemSoulCistern;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;

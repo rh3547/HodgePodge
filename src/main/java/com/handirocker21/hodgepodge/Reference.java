@@ -51,7 +51,8 @@ public class Reference {
 	 * Block Names
 	 */
 	public static enum HodgePodgeBlocks {
-		RUBY_BLOCK("rubyblock", "BlockRuby");
+		RUBY_BLOCK("rubyblock", "BlockRuby"),
+		PEDESTAL_BLOCK("pedestal", "pedestal");
 		
 		private String unlocalizedName;
 		private String registryName;
