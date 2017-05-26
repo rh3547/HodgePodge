@@ -11,6 +11,7 @@ import com.handirocker21.hodgepodge.items.ItemSoulCistern;
 import com.handirocker21.hodgepodge.items.ItemSoulCore;
 import com.handirocker21.hodgepodge.utils.Utils;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
@@ -84,8 +85,8 @@ public class ModItems {
 	 * @param item
 	 */
 	private static void registerRender(Item item) {
-		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(
-				new ResourceLocation(Reference.MOD_ID, item.getUnlocalizedName().substring(5)), "inventory"));
+		
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + item.getUnlocalizedName().substring(5), "inventory"));
 		
 		Utils.getLogger().info("Register render for " + item.getUnlocalizedName().substring(5));
 	}

@@ -7,6 +7,8 @@ import com.handirocker21.hodgepodge.blocks.pedestal.BlockPedestal;
 import com.handirocker21.hodgepodge.utils.Utils;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -20,14 +22,15 @@ public class ModBlocks {
 	 * Blocks
 	 */
 	public static Block poweredGemBlock;
-	public static BlockPedestal pedestal;
-
+	public static BlockPedestal pedestalBlock;
+	
 	/**
 	 * Initialize Blocks.
 	 */
 	public static void init() {
 		poweredGemBlock = new BlockPoweredGem(); 
-		pedestal = new BlockPedestal();
+		pedestalBlock = new BlockPedestal();
+
 	}
 	
 	/**
@@ -35,7 +38,7 @@ public class ModBlocks {
 	 */
 	public static void register() {
 		registerBlock(poweredGemBlock);
-		registerBlock(pedestal);
+		registerBlock(pedestalBlock);
 	}
 	
 	/**
@@ -43,7 +46,7 @@ public class ModBlocks {
 	 */
 	public static void registerRenders() {
 		registerRender(poweredGemBlock);
-		registerRender(pedestal);
+		registerRender(pedestalBlock);
 	}
 	
 	/**
@@ -63,9 +66,10 @@ public class ModBlocks {
 	 * @param block
 	 */
 	private static void registerRender(Block block) {
-		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation(
-				new ResourceLocation(Reference.MOD_ID, block.getUnlocalizedName().substring(5)), "inventory"));
-		
+/*		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation(
+				new ResourceLocation(Reference.MOD_ID, block.getUnlocalizedName().substring(5)), "inventory"));*/
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(block), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + block.getUnlocalizedName().substring(5), "inventory"));
+
 		Utils.getLogger().info("Register render for " + block.getUnlocalizedName().substring(5));
 	}
 

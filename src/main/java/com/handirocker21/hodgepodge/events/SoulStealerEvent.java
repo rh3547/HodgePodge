@@ -24,7 +24,7 @@ public class SoulStealerEvent {
 				if (player.getHeldItemMainhand().getItem() == ModTools.soulStealer) {
 					BlockPos pos = event.getEntity().getPosition();
 					EntityItem item = new EntityItem(player.getEntityWorld(), pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ModItems.soul));
-					player.getEntityWorld().spawnEntity(item);
+					player.getEntityWorld().spawnEntityInWorld(item);
 				}
 			}
 		}

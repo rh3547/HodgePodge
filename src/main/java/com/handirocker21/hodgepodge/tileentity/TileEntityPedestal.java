@@ -22,17 +22,17 @@ public class TileEntityPedestal extends TileEntity {
 	public ItemStackHandler inventory = new ItemStackHandler(1) {
 		@Override
 		protected void onContentsChanged(int slot) {
-			if (!world.isRemote) {
-				lastChangeTime = world.getTotalWorldTime();
+			if (!worldObj.isRemote) {
+				lastChangeTime = worldObj.getTotalWorldTime();
 				HodgePodge.wrapper.sendToAllAround(
-						new PacketUpdatePedestal(TileEntityPedestal.this), new NetworkRegistry.TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 64));
+						new PacketUpdatePedestal(TileEntityPedestal.this), new NetworkRegistry.TargetPoint(worldObj.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 64));
 			}
 		}
 	};
 	
 	@Override
 	public void onLoad() {
-		if (world.isRemote) {
+		if (worldObj.isRemote) {
 			HodgePodge.wrapper.sendToServer(new PacketRequestUpdatePedestal(this));
 		}
 	}

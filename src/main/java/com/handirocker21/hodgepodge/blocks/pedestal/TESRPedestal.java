@@ -18,7 +18,7 @@ public class TESRPedestal extends TileEntitySpecialRenderer<TileEntityPedestal> 
 	@Override
 	public void renderTileEntityAt(TileEntityPedestal te, double x, double y, double z, float partialTicks, int destroyStage) {
 		ItemStack stack = te.inventory.getStackInSlot(0);
-		if (!stack.isEmpty()) {
+		if (stack != null) {
 			GlStateManager.enableRescaleNormal();
 			GlStateManager.alphaFunc(GL11.GL_GREATER, 0.1f);
 			GlStateManager.enableBlend();

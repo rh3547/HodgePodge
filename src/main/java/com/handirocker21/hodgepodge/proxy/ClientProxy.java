@@ -24,7 +24,7 @@ public class ClientProxy implements CommonProxy {
 		ModTools.registerRenders();
 		ModEntities.registerRenders();
 		registerTileEntities();
-		registerRenderers();
+		registerRenderers();		
 	}
 
 	@Override
@@ -32,12 +32,7 @@ public class ClientProxy implements CommonProxy {
         GameRegistry.registerTileEntity(TileEntityPedestal.class, Reference.MOD_ID + "TileEntityPedestal");
 
 	}
-
-	@Override
-	public void registerModelBakery() {
-
-	}
-
+	
 	@Override
 	public String localize(String unlocalized, Object... args) {
 		return I18n.format(unlocalized, args);

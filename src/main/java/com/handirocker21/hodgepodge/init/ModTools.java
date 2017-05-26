@@ -11,6 +11,7 @@ import com.handirocker21.hodgepodge.items.ItemNightsBane;
 import com.handirocker21.hodgepodge.items.ItemSoulStealer;
 import com.handirocker21.hodgepodge.utils.Utils;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
@@ -92,9 +93,10 @@ public class ModTools {
 	 * @param item
 	 */
 	private static void registerRender(Item item) {
-		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(
-				new ResourceLocation(Reference.MOD_ID, item.getUnlocalizedName().substring(5)), "inventory"));
-		
+/*		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(
+				new ResourceLocation(Reference.MOD_ID, item.getUnlocalizedName().substring(5)), "inventory"));*/
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + item.getUnlocalizedName().substring(5), "inventory"));
+
 		Utils.getLogger().info("Register render for " + item.getUnlocalizedName().substring(5));
 	}
 }	

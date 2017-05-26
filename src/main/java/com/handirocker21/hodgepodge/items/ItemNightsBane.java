@@ -73,9 +73,9 @@ public class ItemNightsBane extends ItemSword {
 							long cool = ((20 * SUPER_HITS_COOLDOWN) - (time - this.lastTime)) / 20;
 							
 							if (cool == 0)
-								player.sendMessage(new TextComponentString("Super Hits Ready!"));
+								player.addChatMessage(new TextComponentString("Super Hits Ready!"));
 							else
-								player.sendMessage(new TextComponentString("Super Hits Cooldown: " + cool + "s"));
+								player.addChatMessage(new TextComponentString("Super Hits Cooldown: " + cool + "s"));
 						}
 					}
 				}
@@ -123,9 +123,9 @@ public class ItemNightsBane extends ItemSword {
 				
 				// Super hits remaining message
 				if (this.superHits == 0)
-					((EntityPlayer) attacker).sendMessage(new TextComponentString("Super Hits Expended, 30s cooldown"));
+					((EntityPlayer) attacker).addChatMessage(new TextComponentString("Super Hits Expended, 30s cooldown"));
 				else
-					((EntityPlayer) attacker).sendMessage(new TextComponentString("Super Hits Remaining: " + this.superHits));
+					((EntityPlayer) attacker).addChatMessage(new TextComponentString("Super Hits Remaining: " + this.superHits));
 			}
 			
 			if (attacker instanceof EntityPlayer) {

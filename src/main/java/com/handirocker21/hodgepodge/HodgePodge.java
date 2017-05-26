@@ -12,6 +12,7 @@ import com.handirocker21.hodgepodge.proxy.CommonProxy;
 import com.handirocker21.hodgepodge.utils.Utils;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -43,20 +44,16 @@ public class HodgePodge {
 	public void preInit(FMLPreInitializationEvent event) {
 		Utils.getLogger().info("Pre Initialization");
 		
-		// Initialize items and blocks
+		// Initialize items, fluids, and blocks
 		ModItems.init();
 		ModBlocks.init();
 		ModTools.init();
 		
-		// Register items and blocks
+		// Register items, fluids, and blocks
 		ModItems.register();
 		ModBlocks.register();	
 		ModTools.register();
 
-		
-		// Initialize proxys (register renders)
-		proxy.init();
-		
 		// Register GUI handler
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 			
@@ -79,6 +76,8 @@ public class HodgePodge {
 		
 		// Register mobs
 		ModEntities.register();
+		
+		proxy.init();
 	}
 	
 	@EventHandler
@@ -91,8 +90,8 @@ public class HodgePodge {
 	 */
 	public static CreativeTabs tabHodgePodge = new CreativeTabs("tab_hodgepodge") {
 		@Override
-		public ItemStack getTabIconItem() {
-			return new ItemStack(ModItems.mobMatter);
+		public Item getTabIconItem() {
+			return ModItems.mobMatter;
 		}
 	};
 }

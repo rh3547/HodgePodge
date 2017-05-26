@@ -5,7 +5,6 @@ import com.handirocker21.hodgepodge.Reference;
 import com.handirocker21.hodgepodge.mobs.entities.EntityHodgePodge;
 import com.handirocker21.hodgepodge.mobs.models.ModelHodgePodge;
 import com.handirocker21.hodgepodge.mobs.renderers.RenderHodgePodge;
-import com.handirocker21.hodgepodge.mobs.renderers.RenderHodgePodgeFactory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.EnumCreatureType;
@@ -25,11 +24,12 @@ public class ModEntities {
 	}
 	
 	public static void registerRenders() {
-		RenderingRegistry.registerEntityRenderingHandler(EntityHodgePodge.class, RenderHodgePodgeFactory.INSTANCE);
+		RenderingRegistry.registerEntityRenderingHandler(EntityHodgePodge.class, new RenderHodgePodge(Minecraft.getMinecraft().getRenderManager(), new ModelHodgePodge(), 0.5F));
+
 	}
 	
 	public static void registerEntity() {
-		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID, "textures/entities/hodgepodge.png"),  EntityHodgePodge.class, "hodgepodge", 300, HodgePodge.instance, 64, 1, false, 0x57046B, 0xBA49D6);
+		EntityRegistry.registerModEntity(EntityHodgePodge.class, "hodgepodge", 300, HodgePodge.instance, 64, 1, true, 0x57046B, 0xBA49D6);
 		EntityRegistry.addSpawn(EntityHodgePodge.class, 10, 1, 6, EnumCreatureType.CREATURE, Biomes.PLAINS);
 	}
 }

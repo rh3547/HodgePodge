@@ -2,6 +2,8 @@ package com.handirocker21.hodgepodge.blocks.pedestal;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import com.handirocker21.hodgepodge.HodgePodge;
 import com.handirocker21.hodgepodge.Reference;
 import com.handirocker21.hodgepodge.blocks.BlockTileEntity;
@@ -51,36 +53,38 @@ public class BlockPedestal extends BlockTileEntity<TileEntityPedestal> {
 		return new TileEntityPedestal();
 	}
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (!world.isRemote) {
 			TileEntityPedestal tile = getTileEntity(world, pos);
 			IItemHandler itemHandler = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, side);
 			if (!player.isSneaking()) {
-				if (player.getHeldItem(hand).isEmpty()) {
+				if (heldItem == null) {
 					player.setHeldItem(hand, itemHandler.extractItem(0, 64, false));
-
 				} else {
-					player.setHeldItem(hand, itemHandler.insertItem(0, player.getHeldItem(hand), false));
+					player.setHeldItem(hand, itemHandler.insertItem(0, heldItem, false));
 				}
 				tile.markDirty();
 			} else {
 				ItemStack stack = itemHandler.getStackInSlot(0);
-				if (!stack.isEmpty()) {
-	  				player.openGui(HodgePodge.instance, GuiHandler.PEDESTAL, world, pos.getX(), pos.getY(), pos.getZ());
+				if (stack != null) {
+					String localized = HodgePodge.proxy.localize(stack.getUnlocalizedName() + ".name");
+					player.addChatMessage(new TextComponentString(stack.stackSize + "x " + localized));
+				} else {
+					player.addChatMessage(new TextComponentString("Empty"));
 				}
 			}
 		}
 		return true;
 	}
-
+	
 	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState state) {
 		TileEntityPedestal tile = getTileEntity(world, pos);
 		IItemHandler itemHandler = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.NORTH);
 		ItemStack stack = itemHandler.getStackInSlot(0);
-		if (!stack.isEmpty()) {
+		if (stack != null) {
 			EntityItem item = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), stack);
-			world.spawnEntity(item);
+			world.spawnEntityInWorld(item);
 		}
 		super.breakBlock(world, pos, state);
 	}

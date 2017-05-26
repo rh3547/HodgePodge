@@ -8,7 +8,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ServerProxy implements CommonProxy {
-
+	
 	@Override
 	public void init() {
 		
@@ -16,11 +16,6 @@ public class ServerProxy implements CommonProxy {
 	
 	@Override
 	public void registerTileEntities() {
-		
-	}
-
-	@Override
-	public void registerModelBakery() {
 		
 	}
 
@@ -33,4 +28,5 @@ public class ServerProxy implements CommonProxy {
 	public void registerRenderers() {
 		
 	}
+
 }

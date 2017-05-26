@@ -21,14 +21,14 @@ public class ItemSoul extends Item {
 	}
 	
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World world, EntityPlayer player, EnumHand hand) {
 		
 		if (player.getHealth() < player.getMaxHealth()) {
 			player.heal(2F);
-			player.getHeldItem(hand).shrink(1);
+			player.getHeldItem(hand).stackSize--;
 		}
 		
-		return super.onItemRightClick(world, player, hand);
+		return super.onItemRightClick(itemStackIn, world, player, hand);
 	}
 	
 	@Override
