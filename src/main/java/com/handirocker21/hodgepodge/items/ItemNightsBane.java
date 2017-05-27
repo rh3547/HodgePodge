@@ -48,57 +48,54 @@ public class ItemNightsBane extends ItemSword {
 		 * If it is night time (greater than 13000),
 		 * put the sword into "upgraded" mode.
 		 */
-		long time = worldIn.getWorldTime();
-		
-		if (time >= 13000) {
-			if (!this.doUpgrade) {
-				this.doUpgrade = true;
-				this.superHits = SUPER_HITS_MAX;
-			}
-			
-			// If all super hits have been used, start cooldown
-			if (this.superHits == 0) {
-				if (!this.timeCaptured) {
-					this.timeCaptured = true;
-					this.lastTime = time;
-					this.delta = time;
-				}
+		if(entityIn instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer)entityIn;
+
+			if (player.getHeldItemMainhand() != null && player.getHeldItemMainhand().getItem() == this) {
+
+				long time = worldIn.getWorldTime();
 				
-				// Show cooldown message every second
-				if (this.delta != 0 && (time - this.delta >= (20))) {
-					this.delta = time;
-					if (entityIn instanceof EntityPlayer) {
-						EntityPlayer player = (EntityPlayer)entityIn;
-						if (player.getHeldItemMainhand().getItem() == this) {
+				if (time >= 13000) {
+					if (!this.doUpgrade) {
+						this.doUpgrade = true;
+						this.superHits = SUPER_HITS_MAX;
+					}
+					
+					// If all super hits have been used, start cooldown
+					if (this.superHits == 0) {
+						if (!this.timeCaptured) {
+							this.timeCaptured = true;
+							this.lastTime = time;
+							this.delta = time;
+						}
+						
+						// Show cooldown message every second
+						if (this.delta != 0 && (time - this.delta >= (20))) {
+							this.delta = time;
 							long cool = ((20 * SUPER_HITS_COOLDOWN) - (time - this.lastTime)) / 20;
-							
+		
 							if (cool == 0)
 								player.addChatMessage(new TextComponentString("Super Hits Ready!"));
 							else
 								player.addChatMessage(new TextComponentString("Super Hits Cooldown: " + cool + "s"));
 						}
+						
+						// Reset super hits after cooldown
+						if ((time - this.lastTime) >= (20 * SUPER_HITS_COOLDOWN)) {
+							this.superHits = SUPER_HITS_MAX;
+							this.lastTime = 0;
+							this.timeCaptured = false;
+						}
 					}
-				}
-				
-				// Reset super hits after cooldown
-				if ((time - this.lastTime) >= (20 * SUPER_HITS_COOLDOWN)) {
-					this.superHits = SUPER_HITS_MAX;
-					this.lastTime = 0;
-					this.timeCaptured = false;
-				}
-			}
-			
-			// Add night vision
-			if (entityIn instanceof EntityPlayer) {
-				EntityPlayer player = (EntityPlayer)entityIn;
-				
-				if (player.getHeldItemMainhand().getItem() == this) {
+					
+					// Add night vision
 					player.addPotionEffect(new PotionEffect(Potion.getPotionById(16), 20));
+		
+				}
+				else {
+					this.doUpgrade = false;
 				}
 			}
-		}
-		else {
-			this.doUpgrade = false;
 		}
 		
 		super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);

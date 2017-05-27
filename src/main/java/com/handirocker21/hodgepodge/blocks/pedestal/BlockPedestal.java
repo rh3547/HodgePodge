@@ -67,10 +67,7 @@ public class BlockPedestal extends BlockTileEntity<TileEntityPedestal> {
 			} else {
 				ItemStack stack = itemHandler.getStackInSlot(0);
 				if (stack != null) {
-					String localized = HodgePodge.proxy.localize(stack.getUnlocalizedName() + ".name");
-					player.addChatMessage(new TextComponentString(stack.stackSize + "x " + localized));
-				} else {
-					player.addChatMessage(new TextComponentString("Empty"));
+	  				player.openGui(HodgePodge.instance, GuiHandler.PEDESTAL, world, pos.getX(), pos.getY(), pos.getZ());
 				}
 			}
 		}

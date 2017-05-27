@@ -1,0 +1,11 @@
+{
+  "cistern_whispers": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "HodgePodge:cistern_whispers",
+        "stream": true
+      }
+    ]
+  }
+}
