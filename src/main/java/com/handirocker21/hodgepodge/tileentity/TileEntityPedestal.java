@@ -20,6 +20,10 @@ public class TileEntityPedestal extends TileEntity {
 	public long lastChangeTime;
 
 	public ItemStackHandler inventory = new ItemStackHandler(1) {
+		
+		/**
+		 * Called when the contents of the tile entity's inventory are changed.
+		 */
 		@Override
 		protected void onContentsChanged(int slot) {
 			if (!worldObj.isRemote) {
@@ -30,17 +34,28 @@ public class TileEntityPedestal extends TileEntity {
 		}
 	};
 	
+	/**
+	 * Called from the chunk when this is first added to the world. 
+	 * Happens after validate and after it has been placed into the chunk tile entity map.
+	 */
 	@Override
 	public void onLoad() {
 		if (worldObj.isRemote) {
 			HodgePodge.wrapper.sendToServer(new PacketRequestUpdatePedestal(this));
 		}
 	}
+	
+	/**
+	 * Return an AxisAlignedBB that controls the visible scope of a TileEntitySpecialRenderer associated with this tile entity.
+	 */
 	@Override
 	public AxisAlignedBB getRenderBoundingBox() {
 		return new AxisAlignedBB(getPos(), getPos().add(1, 2, 1));
 	}
 	
+	/**
+	 * Writes to NBTTagCompound, the serialized inventory data, and last change time.
+	 */
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		compound.setTag("inventory", inventory.serializeNBT());
@@ -48,6 +63,9 @@ public class TileEntityPedestal extends TileEntity {
 		return super.writeToNBT(compound);
 	}
 	
+	/**
+	 * Reads from the NBTTagCompound, the deserialized inventory data, and last change time.
+	 */
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		inventory.deserializeNBT(compound.getCompoundTag("inventory"));
@@ -55,11 +73,17 @@ public class TileEntityPedestal extends TileEntity {
 		super.readFromNBT(compound);
 	}
 	
+	/**
+	 * Determines if this tile entity has support for the item handler capability on the specific side.
+	 */
 	@Override
 	public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
 		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, facing);
 	}
 	
+	/**
+	 * Retrieves the handler for the item handler capability on the specific side for the tile entity.
+	 */
 	@Nullable
 	@Override
 	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {

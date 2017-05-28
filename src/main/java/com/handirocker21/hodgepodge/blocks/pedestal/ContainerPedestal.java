@@ -12,13 +12,19 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class ContainerPedestal extends Container{
-
+public class ContainerPedestal extends Container {
+	
+	/**
+	 * Returns a boolean if a player can interact with the container.
+	 */
 	@Override
 	public boolean canInteractWith(EntityPlayer playerIn) {
 		return true;
 	}
-
+	
+	/**
+	 * Called when an item stack is taken from the specified inventory slot.
+	 */
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer player, int index) {
 		ItemStack itemstack = null;
@@ -53,6 +59,12 @@ public class ContainerPedestal extends Container{
 	
 		return itemstack;
 	}
+	
+	/**
+	 * Updates the inventory in the tile entity's container with items and slots.
+	 * @param playerInv
+	 * @param pedestal
+	 */
 	public ContainerPedestal(InventoryPlayer playerInv, final TileEntityPedestal pedestal) {
 		IItemHandler inventory = pedestal.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.NORTH);
 		addSlotToContainer(new SlotItemHandler(inventory, 0, 80, 35) {

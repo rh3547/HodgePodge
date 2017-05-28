@@ -15,6 +15,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.ForgeHooksClient;
 
 public class TESRPedestal extends TileEntitySpecialRenderer<TileEntityPedestal> {
+	
+	/**
+	 * Renders the tile entity with a special renderer.
+	 */
 	@Override
 	public void renderTileEntityAt(TileEntityPedestal te, double x, double y, double z, float partialTicks, int destroyStage) {
 		ItemStack stack = te.inventory.getStackInSlot(0);
