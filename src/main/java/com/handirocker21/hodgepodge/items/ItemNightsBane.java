@@ -77,30 +77,35 @@ public class ItemNightsBane extends ItemSword {
 						worldIn.playSound(null, player.getPosition(), ModSounds.nightsbanePh, SoundCategory.PLAYERS, 0.6F, 1.0F);
 						
 						// Show some particles
-						Random rand = player.getRNG();
-						WorldServer sWorld = (WorldServer)worldIn;
-						for (int i = 0; i < 2; ++i)
-			            {
-							double d3 = player.posX + rand.nextGaussian() / 4D;
-				            double d4 = player.posY + 1.0D + rand.nextGaussian() / 4D;
-				            double d5 = player.posZ + rand.nextGaussian() / 4D;
-				            
-				            for (int j = 0; j < 2; ++j)
-			                {
-								sWorld.spawnParticle(EnumParticleTypes.FLAME, 
-										d3, d4, d5, 
-										2, 0.0D, 0.0D, 0.0D, 0.2D, new int[0]);
-								
-								if ((j * i) % 2 == 0)
-									sWorld.spawnParticle(EnumParticleTypes.CRIT_MAGIC, 
+						try {
+							Random rand = player.getRNG();
+							WorldServer sWorld = (WorldServer)worldIn;
+							for (int i = 0; i < 2; ++i)
+				            {
+								double d3 = player.posX + rand.nextGaussian() / 4D;
+					            double d4 = player.posY + 1.0D + rand.nextGaussian() / 4D;
+					            double d5 = player.posZ + rand.nextGaussian() / 4D;
+					            
+					            for (int j = 0; j < 2; ++j)
+				                {
+									sWorld.spawnParticle(EnumParticleTypes.FLAME, 
 											d3, d4, d5, 
-											1, 0.0D, 0.0D, 0.0D, 0.45D, new int[0]);
-								else
-									sWorld.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, 
-											d3, d4, d5, 
-											1, 0.0D, 0.0D, 0.0D, 0.6D, new int[0]);
-			                }
-			            }
+											2, 0.0D, 0.0D, 0.0D, 0.2D, new int[0]);
+									
+									if ((j * i) % 2 == 0)
+										sWorld.spawnParticle(EnumParticleTypes.CRIT_MAGIC, 
+												d3, d4, d5, 
+												1, 0.0D, 0.0D, 0.0D, 0.45D, new int[0]);
+									else
+										sWorld.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, 
+												d3, d4, d5, 
+												1, 0.0D, 0.0D, 0.0D, 0.6D, new int[0]);
+				                }
+				            }
+						}
+						catch (Exception e) {
+							e.printStackTrace();
+						}
 					}
 				}
 				
