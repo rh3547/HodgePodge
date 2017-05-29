@@ -28,9 +28,10 @@ public class ModFluids {
 	 */
 	public static void init() { 
 		fluidMobMatter = new FluidMobMatter();
+		FluidRegistry.registerFluid(fluidMobMatter);
+		FluidRegistry.addBucketForFluid(fluidMobMatter);
+		
 		blockMobMatter = new BlockMobMatter(fluidMobMatter);
-
-		FluidRegistry.addBucketForFluid(fluidMobMatter);		
 		GameRegistry.registerBlock(blockMobMatter, Reference.HodgePodgeBlocks.MOBMATTER_FLUID_BLOCK.getRegistryName());
 		ModFluids.registerRenders();
 	}
