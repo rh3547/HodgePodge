@@ -1,0 +1,12 @@
+Name these files the same as you specified in the corresponding block's blockstates file.
+
+Ex: A block with ""model": "hodgepodge:rubyblock"" specified as a model in it's blockstates
+file should have a model file named "rubyblock.json".
+
+When specifiying a texture with the following:
+
+    "textures": {
+        "all": "hodgepodge:blocks/rubyblock"
+    }
+    
+The text "rubyblock" should be the name of the texture (png) file.

@@ -1,0 +1,19 @@
+{
+  "cistern_whispers": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "HodgePodge:cistern_whispers",
+        "stream": true
+      }
+    ]
+  },
+  "nightsbane_ph": {
+    "category": "player",
+    "sounds": [ "HodgePodge:nightsbane_ph" ]
+  },
+  "nightsbane_kill": {
+    "category": "player",
+    "sounds": [ "HodgePodge:nightsbane_kill" ]
+  }
+}

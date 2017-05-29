@@ -1,0 +1,44 @@
+/*
+    Lang file
+*/
+
+// Items
+item.obsidianingot.name=Obsidian Ingot
+item.poweredgem.name=Powered Gem
+item.gemmy.name=Delicious Gemmy
+item.soulcore.name=Soul Core
+item.soul.name=Soul
+item.soulstealer.name=Soul Stealer
+item.soulcistern.name=Cistern of Souls
+item.mobmatter.name=Mob Matter
+
+// Item Tooltips
+hodgepodge.rubidiansword.tooltip=Prevail in darkness
+hodgepodge.soul.tooltip=Replenish your soul
+hodgepodge.soulstealer.tooltip=Relieve the soul of another
+hodgepodge.soulcistern.tooltip=Listen close, and hear them whisper
+
+// Blocks
+tile.poweredgemblock.name=Powered Gem Block
+tile.pedestal.name=Pedestal
+
+// Tools
+item.obsidianpickaxe.name=Obsidian Pickaxe
+item.obsidianaxe.name=Obsidian Axe
+item.obsidianhoe.name=Obsidian Hoe
+item.obsidianspade.name=Obsidian Shovel
+item.obsidiansword.name=Obsidian Sword
+item.nightsbane.name=Night's Bane
+
+// Item Tooltips
+hodgepodge.nightsbane.tooltip=Prevail in darkness
+hodgepodge.soul.tooltip=Replenish your soul
+hodgepodge.soulstealer.tooltip=Relieve the soul of another
+hodgepodge.soulcistern.tooltip=Listen close, and hear them whisper
+hodgepodge.mobmatter.tooltip=It's pretty disgusting...
+
+// Creative Tab
+itemGroup.tab_hodgepodge=Hodge Podge Mess
+
+//Entities 
+entity.hodgepodge.hodgepodge.name=Hodge Podge
