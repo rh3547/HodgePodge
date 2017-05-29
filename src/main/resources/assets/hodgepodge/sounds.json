@@ -7,5 +7,13 @@
         "stream": true
       }
     ]
+  },
+  "nightsbane_ph": {
+    "category": "player",
+    "sounds": [ "HodgePodge:nightsbane_ph" ]
+  },
+  "nightsbane_kill": {
+    "category": "player",
+    "sounds": [ "HodgePodge:nightsbane_kill" ]
   }
 }

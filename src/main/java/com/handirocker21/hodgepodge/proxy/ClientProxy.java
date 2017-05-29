@@ -13,7 +13,12 @@ import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ClientProxy implements CommonProxy {
-
+	
+	@Override
+	public void preInit() {
+		ModTools.registerCustomModels();
+	}
+	
 	@Override
 	public void init() {
 		/*
@@ -22,7 +27,9 @@ public class ClientProxy implements CommonProxy {
 		ModItems.registerRenders();
 		ModBlocks.registerRenders();
 		ModTools.registerRenders();
+		ModTools.registerModelVariants();
 		ModEntities.registerRenders();
+		
 		registerTileEntities();
 		registerRenderers();		
 	}

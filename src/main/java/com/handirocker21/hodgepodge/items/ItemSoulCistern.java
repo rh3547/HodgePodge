@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.handirocker21.hodgepodge.Reference;
 import com.handirocker21.hodgepodge.init.ModItems;
+import com.handirocker21.hodgepodge.init.ModSounds;
 import com.handirocker21.hodgepodge.init.ModTools;
 import com.handirocker21.hodgepodge.utils.Utils;
 
@@ -39,20 +40,22 @@ public class ItemSoulCistern extends Item {
 	}
 		
 	@Override
-    public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected){
+    public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
     	
+		// Loop the whisper sound while held
     	if(entityIn != null && entityIn instanceof EntityPlayer){
        		EntityPlayer p = (EntityPlayer)entityIn;
+       		
 			if (p != null && p.getHeldItemMainhand() != null && p.getHeldItemMainhand().getItem() == this) {
-	    		if(!soundPlaying){
+	    		if (!soundPlaying) {
 	        		lastTime = worldIn.getWorldTime();
 	        		soundPlaying = true;
-	        		ResourceLocation location = new ResourceLocation(Reference.MOD_ID, "cistern_whispers");
-	        		SoundEvent event = new SoundEvent(location);
-	        		p.playSound(event, 0.2F, 1.0F);
-	    		}else{
+	        		
+	        		p.playSound(ModSounds.cisternWhispers, 0.2F, 1.0F);
+	    		}
+	    		else {
 	    	  		long time = worldIn.getWorldTime();
-	    	  		if(time - lastTime >= (20 * 14)){
+	    	  		if (time - lastTime >= (20 * 14)) {
 	    	  			soundPlaying = false;
 	    	  		}
 	    		}

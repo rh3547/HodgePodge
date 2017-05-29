@@ -10,6 +10,11 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class ServerProxy implements CommonProxy {
 	
 	@Override
+	public void preInit() {
+		
+	}
+	
+	@Override
 	public void init() {
 		
 	}
@@ -28,5 +33,4 @@ public class ServerProxy implements CommonProxy {
 	public void registerRenderers() {
 		
 	}
-
 }

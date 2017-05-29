@@ -5,6 +5,7 @@ import com.handirocker21.hodgepodge.init.ModBlocks;
 import com.handirocker21.hodgepodge.init.ModCrafting;
 import com.handirocker21.hodgepodge.init.ModEntities;
 import com.handirocker21.hodgepodge.init.ModItems;
+import com.handirocker21.hodgepodge.init.ModSounds;
 import com.handirocker21.hodgepodge.init.ModTools;
 import com.handirocker21.hodgepodge.network.PacketRequestUpdatePedestal;
 import com.handirocker21.hodgepodge.network.PacketUpdatePedestal;
@@ -44,12 +45,13 @@ public class HodgePodge {
 	public void preInit(FMLPreInitializationEvent event) {
 		Utils.getLogger().info("Pre Initialization");
 		
-		// Initialize items, fluids, and blocks
+		// Initialize items, fluids, and blocks, etc.
+		ModSounds.init();
 		ModItems.init();
 		ModBlocks.init();
 		ModTools.init();
 		
-		// Register items, fluids, and blocks
+		// Register items, fluids, and blocks, etc.
 		ModItems.register();
 		ModBlocks.register();	
 		ModTools.register();
@@ -60,6 +62,8 @@ public class HodgePodge {
 		wrapper = NetworkRegistry.INSTANCE.newSimpleChannel(Reference.MOD_ID);
 		wrapper.registerMessage(new PacketUpdatePedestal.Handler(), PacketUpdatePedestal.class, 0, Side.CLIENT);
 		wrapper.registerMessage(new PacketRequestUpdatePedestal.Handler(), PacketRequestUpdatePedestal.class, 1, Side.SERVER);
+		
+		proxy.preInit();
 	}
 	
 	@EventHandler
