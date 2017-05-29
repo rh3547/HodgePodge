@@ -4,6 +4,7 @@ import com.handirocker21.hodgepodge.Reference;
 import com.handirocker21.hodgepodge.blocks.pedestal.TESRPedestal;
 import com.handirocker21.hodgepodge.init.ModBlocks;
 import com.handirocker21.hodgepodge.init.ModEntities;
+import com.handirocker21.hodgepodge.init.ModFluids;
 import com.handirocker21.hodgepodge.init.ModItems;
 import com.handirocker21.hodgepodge.init.ModTools;
 import com.handirocker21.hodgepodge.tileentity.TileEntityPedestal;
@@ -37,7 +38,6 @@ public class ClientProxy implements CommonProxy {
 	@Override
 	public void registerTileEntities() {
         GameRegistry.registerTileEntity(TileEntityPedestal.class, Reference.MOD_ID + "TileEntityPedestal");
-
 	}
 	
 	@Override
@@ -48,7 +48,6 @@ public class ClientProxy implements CommonProxy {
 	@Override
 	public void registerRenderers() {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPedestal.class, new TESRPedestal());
-		
 	}
 
 }

@@ -30,7 +30,6 @@ public class ModBlocks {
 	public static void init() {
 		poweredGemBlock = new BlockPoweredGem(); 
 		pedestalBlock = new BlockPedestal();
-
 	}
 	
 	/**
@@ -66,10 +65,7 @@ public class ModBlocks {
 	 * @param block
 	 */
 	private static void registerRender(Block block) {
-/*		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation(
-				new ResourceLocation(Reference.MOD_ID, block.getUnlocalizedName().substring(5)), "inventory"));*/
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(block), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + block.getUnlocalizedName().substring(5), "inventory"));
-
 		Utils.getLogger().info("Register render for " + block.getUnlocalizedName().substring(5));
 	}
 

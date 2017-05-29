@@ -1,9 +1,12 @@
 package com.handirocker21.hodgepodge;
 
+import java.util.List;
+
 import com.handirocker21.hodgepodge.handlers.GuiHandler;
 import com.handirocker21.hodgepodge.init.ModBlocks;
 import com.handirocker21.hodgepodge.init.ModCrafting;
 import com.handirocker21.hodgepodge.init.ModEntities;
+import com.handirocker21.hodgepodge.init.ModFluids;
 import com.handirocker21.hodgepodge.init.ModItems;
 import com.handirocker21.hodgepodge.init.ModSounds;
 import com.handirocker21.hodgepodge.init.ModTools;
@@ -15,6 +18,9 @@ import com.handirocker21.hodgepodge.utils.Utils;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.ForgeModContainer;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.UniversalBucket;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -25,13 +31,14 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.NAME, version = Reference.VERSION, acceptedMinecraftVersions = Reference.ACCEPTED_VERSIONS)
 public class HodgePodge {
 	
 	// The custom event handler
 	com.handirocker21.hodgepodge.handlers.EventHandler eventHandler = new com.handirocker21.hodgepodge.handlers.EventHandler();
-
+	
 	
 	public static SimpleNetworkWrapper wrapper;
 
@@ -41,12 +48,20 @@ public class HodgePodge {
 	@SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
 	public static CommonProxy proxy;
 	
+	public static FluidRegistry registry;
+	
+	// Must be called before preInit
+	static {
+		FluidRegistry.enableUniversalBucket();
+	}
+	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		Utils.getLogger().info("Pre Initialization");
 		
 		// Initialize items, fluids, and blocks, etc.
 		ModSounds.init();
+		ModFluids.init();
 		ModItems.init();
 		ModBlocks.init();
 		ModTools.init();
@@ -93,9 +108,18 @@ public class HodgePodge {
 	 * Our custom creative tab.
 	 */
 	public static CreativeTabs tabHodgePodge = new CreativeTabs("tab_hodgepodge") {
+		
 		@Override
 		public Item getTabIconItem() {
 			return ModItems.mobMatter;
+		}
+		
+		@SideOnly(Side.CLIENT)
+		@Override
+		public void displayAllRelevantItems(List<ItemStack> items) {
+			items.add(UniversalBucket.getFilledBucket(ForgeModContainer.getInstance().universalBucket,
+					FluidRegistry.getFluid(Reference.HodgePodgeBlocks.MOBMATTER_FLUID_BLOCK.getUnlocalizedName())));
+			super.displayAllRelevantItems(items);
 		}
 	};
 }

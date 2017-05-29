@@ -10,16 +10,24 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.util.ResourceLocation;
 
-public class GuiPedestal extends GuiContainer{
+public class GuiPedestal extends GuiContainer {
 
 	private InventoryPlayer playerInv;
 	private static final ResourceLocation BG_TEXTURE = new ResourceLocation(Reference.MOD_ID, "textures/gui/pedestal.png");
-
+	
+	/**
+	 * Constructor that initializes the container and inventory.
+	 * @param inventorySlotsIn
+	 * @param playerInv
+	 */
 	public GuiPedestal(Container inventorySlotsIn, InventoryPlayer playerInv) {
 		super(inventorySlotsIn);
 		this.playerInv = playerInv;
 	}
-
+	
+	/**
+	 * Draws the background layer of this container (behind the items).
+	 */
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
 		GlStateManager.color(1, 1, 1, 1);
@@ -29,6 +37,9 @@ public class GuiPedestal extends GuiContainer{
 		drawTexturedModalRect(x, y, 0, 0, xSize, ySize);		
 	}
 	
+	/**
+	 * Draw the foreground layer of this container (everything in front of the items).
+	 */
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
 		String name = I18n.format(ModBlocks.pedestalBlock.getUnlocalizedName() + ".name");

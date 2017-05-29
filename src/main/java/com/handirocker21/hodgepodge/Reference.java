@@ -53,7 +53,8 @@ public class Reference {
 	 */
 	public static enum HodgePodgeBlocks {
 		POWERED_GEM_BLOCK("poweredgemblock", "poweredgemblock"),
-		PEDESTAL_BLOCK("pedestal", "pedestal");
+		PEDESTAL_BLOCK("pedestal", "pedestal"),
+		MOBMATTER_FLUID_BLOCK("mobmatterfluid", "mobmatterfluid");
 		
 		private String unlocalizedName;
 		private String registryName;
@@ -97,37 +98,6 @@ public class Reference {
 		
 		public String getRegistryName() {
 			return this.registryName;
-		}
-	}
-	
-	/*
-	 * Chip types for different block/item "levels"
-	 */
-	public static enum ChipTypes implements IStringSerializable {
-		BASIC("basic", 0),
-		ADVANCED("advanced", 1);
-		
-		private int id;
-		private String name;
-		
-		private ChipTypes(String name, int id){
-			this.id = id;
-			this.name = name;
-			
-		}
-		
-		@Override
-		public String getName() {
-			return this.name;
-		}
-		
-		public int getID() {
-			return id;
-		}
-		
-		@Override
-		public String toString() {
-			return getName();
 		}
 	}
 }

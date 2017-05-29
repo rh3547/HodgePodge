@@ -23,7 +23,11 @@ public class ModelHodgePodge extends ModelBase {
     public ModelRenderer villagerHead;
     public ModelRenderer leftVillagerLeg;
     public ModelRenderer Hood;
-
+    
+    /**
+     * Sets up model renderer for different parts of the model.
+     * By setting rotation points and adding boxes.
+     */
     public ModelHodgePodge() {
         this.textureWidth = 64;
         this.textureHeight = 64;
@@ -60,7 +64,10 @@ public class ModelHodgePodge extends ModelBase {
         this.Hood.setRotationPoint(-0.1F, -0.1F, 0.1F);
         this.Hood.addBox(-3.8F, -10.0F, -4.0F, 8, 10, 8);
     }
-
+    
+    /**
+     * Renders the model for the entity.
+     */
     @Override
     public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float rotationYaw, float rotationPitch, float scale) {
         GlStateManager.pushMatrix();
@@ -131,13 +138,23 @@ public class ModelHodgePodge extends ModelBase {
         this.Hood.render(scale);
         GlStateManager.disableBlend();
     }
-
+    
+    /**
+     * Sets rotation angles for the model.
+     * @param modelRenderer
+     * @param x
+     * @param y
+     * @param z
+     */
     public void setRotationAngles(ModelRenderer modelRenderer, float x, float y, float z) {
         modelRenderer.rotateAngleX = x;
         modelRenderer.rotateAngleY = y;
         modelRenderer.rotateAngleZ = z;
     }
-
+    
+    /**
+     * Set rotation angles for the arms and legs.
+     */
 	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
 		this.villagerHead.rotateAngleY = netHeadYaw * 0.017453292F;
 		this.villagerHead.rotateAngleX = headPitch * 0.017453292F;

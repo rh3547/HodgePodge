@@ -26,32 +26,51 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
 public class BlockPedestal extends BlockTileEntity<TileEntityPedestal> {
-
+	
+	/**
+	 * Constructor that initializes a tile entity block.
+	 */
 	public BlockPedestal() {
 		super(Material.ROCK, Reference.HodgePodgeBlocks.PEDESTAL_BLOCK.getUnlocalizedName());
 	}
 	
+	/**
+	 * Returns a boolean if the block state is an opaque cube.
+	 */
 	@Override
 	@Deprecated
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
 	}
-
+	
+	/**
+	 * Returns a boolean if the block state is a full cube.
+	 */
 	@Override
 	@Deprecated
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
 	
+	/**
+	 * Gets the tile entity class.
+	 */
 	@Override
 	public Class<TileEntityPedestal> getTileEntityClass() {
 		return TileEntityPedestal.class;
 	}
-
+	
+	/**
+	 * Creates a new instance of the tile entity in the world.
+	 */
 	@Override
 	public TileEntityPedestal createTileEntity(World world, IBlockState state) {
 		return new TileEntityPedestal();
 	}
+	
+	/**
+	 * Called when the tile entity block is activated.
+	 */
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (!world.isRemote) {
@@ -74,6 +93,9 @@ public class BlockPedestal extends BlockTileEntity<TileEntityPedestal> {
 		return true;
 	}
 	
+	/**
+	 * Called server side after this block is replaced with another in the chunk, but before the tile entity is updated.
+	 */
 	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState state) {
 		TileEntityPedestal tile = getTileEntity(world, pos);

@@ -59,6 +59,10 @@ import net.minecraft.world.storage.loot.LootTableList;
 
 public class EntityHodgePodge extends EntityMob implements IRangedAttackMob {
 
+	/**
+	 * Constructor that initializes in an entity in the world.
+	 * @param worldIn
+	 */
 	public EntityHodgePodge(World worldIn) {
 		super(worldIn);
 		this.setSize(1.00F, 2.50F);
@@ -136,8 +140,6 @@ public class EntityHodgePodge extends EntityMob implements IRangedAttackMob {
 
 	@Override
 	public void attackEntityWithRangedAttack(EntityLivingBase target, float distanceFactor) {
-		// TODO Auto-generated method stub
 		
 	}
-
 }

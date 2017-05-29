@@ -40,5 +40,8 @@ hodgepodge.mobmatter.tooltip=It's pretty disgusting...
 // Creative Tab
 itemGroup.tab_hodgepodge=Hodge Podge Mess
 
-//Entities 
+// Entities 
 entity.hodgepodge.hodgepodge.name=Hodge Podge
+
+// Fluids
+fluid.mobmatterfluid=Mob Matter Fluid
