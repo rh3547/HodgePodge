@@ -83,6 +83,29 @@ public class Cooldown {
 	}
 	
 	/**
+	 * Check if the cooldown is finished. This checking method requires
+	 * all parameters to be passed in since no local class data
+	 * will likely be stored when using this. This function doesn't
+	 * check if the cooldown is running.
+	 * This is useful for situations when using NBT data and
+	 * unique Cooldown object's can't be saved in a class.
+	 * @param startTime
+	 * @param currentTime
+	 * @param duration
+	 * @return true if the cooldown has finished, false if not
+	 */
+	public static boolean checkCooldown(long startTime, long currentTime, int duration) {
+		if ((currentTime - startTime) >= (20 * duration)) {
+			return true;
+		}
+		else if (currentTime < startTime) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	/**
 	 * End the cooldown. Stops the timer from running and resets
 	 * the values.
 	 */

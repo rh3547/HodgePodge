@@ -12,12 +12,12 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
@@ -28,18 +28,11 @@ public class ItemNightsBane extends ItemSword {
 	private static final int POWER_HITS_COOLDOWN = 10;
 	private static final int POWER_HIT_STACK_DAMAGE = 4;
 	
-	private boolean doUpgrade = false;
-	private int powerHits = 0;
-	private Cooldown cooldown;
-	
 	public ItemNightsBane(ToolMaterial material, String unlocalizedName, String registryName) {
 		super(material);
 		
 		this.setUnlocalizedName(unlocalizedName);
 		this.setRegistryName(registryName);
-		
-		this.powerHits = POWER_HITS_MAX;
-		this.cooldown = new Cooldown(POWER_HITS_COOLDOWN);
 	}
 	
 	/*
@@ -49,7 +42,17 @@ public class ItemNightsBane extends ItemSword {
 	@Override
 	public void onUpdate(ItemStack stackIn, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
 		
-		if(entityIn instanceof EntityPlayer) {
+		// Set initial NBT data
+		if (!stackIn.hasTagCompound()) {
+			stackIn.setTagCompound(new NBTTagCompound());
+			stackIn.getTagCompound().setBoolean("doUpgrade", false);
+			stackIn.getTagCompound().setInteger("powerHits", POWER_HITS_MAX);
+			stackIn.getTagCompound().setLong("startTime", 0);
+			stackIn.getTagCompound().setBoolean("cooldownRunning", false);
+		}
+		
+		if(entityIn instanceof EntityPlayer && stackIn.hasTagCompound()) {
+			NBTTagCompound tag = stackIn.getTagCompound();
 			EntityPlayer player = (EntityPlayer)entityIn;
 
 			long time = worldIn.getWorldTime();
@@ -59,49 +62,54 @@ public class ItemNightsBane extends ItemSword {
 			 * put the sword into "upgraded" mode.
 			 */
 			if (time >= 13000 && time <= 23999) {
-				if (!this.doUpgrade) {
-					this.doUpgrade = true;
-					this.powerHits = POWER_HITS_MAX;
+				if (!tag.getBoolean("doUpgrade")) {
+					tag.setBoolean("doUpgrade", true);
+					tag.setInteger("powerHits", POWER_HITS_MAX);
 				}
 				
 				// If power hits left is less than max, start cooldown to gain one back
-				if (powerHits < POWER_HITS_MAX) {
-					if (!cooldown.isRunning()) {
-						cooldown.startCooldown(time);
+				if (tag.getInteger("powerHits") < POWER_HITS_MAX) {
+					if (!tag.getBoolean("cooldownRunning")) {
+						tag.setLong("startTime", time);
+						tag.setBoolean("cooldownRunning", true);
 					}
 					
-					if (cooldown.updateCooldown(time)) {
-						this.powerHits++;
+					if (Cooldown.checkCooldown(tag.getLong("startTime"), time, POWER_HITS_COOLDOWN)) {
+						tag.setInteger("powerHits", tag.getInteger("powerHits") + 1);
+						tag.setBoolean("cooldownRunning", false);
 						
 						// Play sound indicating a power hit was gained
 						worldIn.playSound(null, player.getPosition(), ModSounds.nightsbanePh, SoundCategory.PLAYERS, 0.6F, 1.0F);
 						
 						// Show some particles
 						try {
-							Random rand = player.getRNG();
-							WorldServer sWorld = (WorldServer)worldIn;
-							for (int i = 0; i < 2; ++i)
-				            {
-								double d3 = player.posX + rand.nextGaussian() / 4D;
-					            double d4 = player.posY + 1.0D + rand.nextGaussian() / 4D;
-					            double d5 = player.posZ + rand.nextGaussian() / 4D;
-					            
-					            for (int j = 0; j < 2; ++j)
-				                {
-									sWorld.spawnParticle(EnumParticleTypes.FLAME, 
-											d3, d4, d5, 
-											2, 0.0D, 0.0D, 0.0D, 0.2D, new int[0]);
-									
-									if ((j * i) % 2 == 0)
-										sWorld.spawnParticle(EnumParticleTypes.CRIT_MAGIC, 
+							if (worldIn instanceof WorldServer) {
+								WorldServer sWorld = (WorldServer)worldIn;
+							
+								Random rand = player.getRNG();
+								for (int i = 0; i < 2; ++i)
+					            {
+									double d3 = player.posX + rand.nextGaussian() / 4D;
+						            double d4 = player.posY + 1.0D + rand.nextGaussian() / 4D;
+						            double d5 = player.posZ + rand.nextGaussian() / 4D;
+						            
+						            for (int j = 0; j < 2; ++j)
+					                {
+										sWorld.spawnParticle(EnumParticleTypes.FLAME, 
 												d3, d4, d5, 
-												1, 0.0D, 0.0D, 0.0D, 0.45D, new int[0]);
-									else
-										sWorld.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, 
-												d3, d4, d5, 
-												1, 0.0D, 0.0D, 0.0D, 0.6D, new int[0]);
-				                }
-				            }
+												2, 0.0D, 0.0D, 0.0D, 0.2D, new int[0]);
+										
+										if ((j * i) % 2 == 0)
+											sWorld.spawnParticle(EnumParticleTypes.CRIT_MAGIC, 
+													d3, d4, d5, 
+													1, 0.0D, 0.0D, 0.0D, 0.45D, new int[0]);
+										else
+											sWorld.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, 
+													d3, d4, d5, 
+													1, 0.0D, 0.0D, 0.0D, 0.6D, new int[0]);
+					                }
+					            }
+							}
 						}
 						catch (Exception e) {
 							e.printStackTrace();
@@ -117,7 +125,7 @@ public class ItemNightsBane extends ItemSword {
 	
 			}
 			else {
-				this.doUpgrade = false;
+				tag.setBoolean("doUpgrade", false);
 			}
 		}
 	}
@@ -131,17 +139,22 @@ public class ItemNightsBane extends ItemSword {
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
 		int stackDamage = 1;
 		
+		if (!stack.hasTagCompound())
+			return true;
+		
+		NBTTagCompound tag = stack.getTagCompound();
+			
 		// If upgrade mode is on, perform hits differently
-		if (this.doUpgrade) {
+		if (tag.getBoolean("doUpgrade")) {
 			
 			float damageMult = 5F;
 			boolean doPowerHit = false;
 			
-			if (this.powerHits > 0) {
+			if (tag.getInteger("powerHits") > 0) {
 				damageMult = 7F;
 				stackDamage = POWER_HIT_STACK_DAMAGE;
 				doPowerHit = true;
-				this.powerHits--;
+				tag.setInteger("powerHits", tag.getInteger("powerHits") - 1);
 			}
 			
 			if (attacker instanceof EntityPlayer) {
@@ -204,15 +217,23 @@ public class ItemNightsBane extends ItemSword {
 	 * Return a boolean defining if this is currently in upgrade mode.
 	 * @return doUpgrade
 	 */
-	public boolean isUpgraded() {
-		return this.doUpgrade;
+	public boolean isUpgraded(ItemStack stack) {
+		if (stack.hasTagCompound()) {
+			stack.getTagCompound().getBoolean("doUpgrade");
+		}
+		
+		return false;
 	}
 	
 	/**
 	 * Return the number of power hits remaining.
 	 * @return powerHits
 	 */
-	public int getPowerHits() {
-		return this.powerHits;
+	public int getPowerHits(ItemStack stack) {
+		if (stack.hasTagCompound()) {
+			stack.getTagCompound().getInteger("powerHits");
+		}
+		
+		return 0;
 	}
 }

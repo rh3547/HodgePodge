@@ -13,11 +13,13 @@ public class NightsBaneMeshDefinition implements ItemMeshDefinition {
 	public ModelResourceLocation getModelLocation(ItemStack stack) {
 		
 		if(stack.getItem() == ModTools.nightsBane) {
-			ItemNightsBane bane = (ItemNightsBane)stack.getItem();
 			
-			if (bane.isUpgraded()) {
+			if (!stack.hasTagCompound())
+				return new ModelResourceLocation(ModTools.nightsBane.getRegistryName(), "inventory");
+			
+			if (stack.getTagCompound().getBoolean("doUpgrade")) {
 				
-				switch (bane.getPowerHits()) {
+				switch (stack.getTagCompound().getInteger("powerHits")) {
 					case 4:
 						return new ModelResourceLocation(ModTools.nightsBane.getRegistryName() + "_ph4", "inventory");
 						
